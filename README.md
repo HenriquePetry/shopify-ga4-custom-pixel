@@ -1,20 +1,20 @@
-# Custom Pixel GA4 para Shopify Plus
+# Custom Pixel GA4 for Shopify Plus
 
-Este repositório contém um custom pixel para implementação de eventos padrão do Google Analytics 4 (GA4) em lojas Shopify Plus. O pixel foi projetado para rastrear eventos de e-commerce seguindo o formato de evento padrão do GA4.
+This repository contains a custom pixel for implementing standard Google Analytics 4 (GA4) events in Shopify Plus stores. The pixel is designed to track e-commerce events following the standard GA4 event format.
 
-## Funcionalidades
+## Features
 
-- Rastreamento completo do funil de e-commerce (visualização de produto, adição ao carrinho, checkout, compra)
-- Integração com Google Tag Manager
-- Mapeamento automático dos eventos Shopify para eventos GA4
-- Rastreamento de listas de produtos e pesquisas
-- Persistência de informações de navegação via sessionStorage
+- Complete e-commerce funnel tracking (product view, add to cart, checkout, purchase)
+- Google Tag Manager integration
+- Automatic mapping of Shopify events to GA4 events
+- Product list and search tracking
+- Navigation information persistence via sessionStorage
 
-## Eventos Suportados
+## Supported Events
 
-O pixel mapeia os seguintes eventos Shopify para eventos GA4:
+The pixel maps the following Shopify events to GA4 events:
 
-| Evento Shopify | Evento GA4 |
+| Shopify Event | GA4 Event |
 |----------------|------------|
 | checkout_completed | purchase |
 | payment_info_submitted | add_payment_info |
@@ -27,50 +27,46 @@ O pixel mapeia os seguintes eventos Shopify para eventos GA4:
 | search_submitted | search |
 | collection_viewed | view_item_list |
 
-## Instalação
+## Installation
 
-1. No painel admin da Shopify Plus, navegue até Configurações > Aplicativos e vendas de canais > Desenvolver aplicativos
-2. Crie um novo pixel personalizado
-3. Copie e cole o código do arquivo `custom-pixel.js` no editor de código
-4. **Importante:** Substitua a variável `webGTMID` na linha 6 com sua própria ID do GTM:
+1. In the Shopify Plus admin panel, navigate to Settings > Apps and sales channels > Develop apps
+2. Create a new custom pixel
+3. Copy and paste the code from the `custom-pixel.js` file into the code editor
+4. **Important:** Replace the `webGTMID` variable on line 6 with your own GTM ID:
    ```javascript
    var webGTMID = 'XXX-XXXXXX';
    ```
-5. Salve e publique o pixel
+5. Save and publish the pixel
 
-## Configuração Adicional
+## Additional Configuration
 
 ### Google Tag Manager
 
-Configure seu contêiner GTM para processar os eventos da dataLayer. Os eventos já estão formatados de acordo com as especificações do GA4.
+Configure your GTM container to process dataLayer events. The events are already formatted according to GA4 specifications.
 
-### Armazenamento de Sessão
+### Session Storage
 
-O pixel utiliza `sessionStorage` para manter informações sobre listas de produtos entre páginas. Isso permite que as fontes de tráfego (como coleções ou resultados de pesquisa) sejam rastreadas corretamente quando um usuário navega para um produto.
+The pixel uses `sessionStorage` to maintain information about product lists between pages. This allows traffic sources (such as collections or search results) to be correctly tracked when a user navigates to a product.
 
-## Personalização
+## Customization
 
-Para personalizar o pixel para sua loja:
+To customize the pixel for your store:
 
-1. Ajuste os nomes dos eventos conforme necessário no objeto `shopifyStandardEventToGtagEventsMap`
-2. Modifique as funções de mapeamento de dados conforme seus requisitos específicos
-3. Adicione eventos personalizados usando o método `analytics.subscribe`
+1. Adjust event names as needed in the `shopifyStandardEventToGtagEventsMap` object
+2. Modify data mapping functions according to your specific requirements
+3. Add custom events using the `analytics.subscribe` method
 
-## Estrutura do Código
+## Code Structure
 
-- **Inicialização:** Configuração inicial de variáveis e dataLayer
-- **Funções Utilitárias:** Funções para manipulação de dados e formatos
-- **Adaptadores de Eventos:** Conversão de eventos Shopify para formato GA4
-- **Handlers de Eventos:** Processamento e envio de eventos para o dataLayer
+- **Initialization:** Initial configuration of variables and dataLayer
+- **Utility Functions:** Functions for data manipulation and formatting
+- **Event Adapters:** Conversion of Shopify events to GA4 format
+- **Event Handlers:** Processing and sending events to the dataLayer
 
-## Compatibilidade
+## Compatibility
 
-Este pixel é compatível com a versão mais recente da Shopify Plus e segue as diretrizes de implementação do Google Analytics 4.
+This pixel is compatible with the latest version of Shopify Plus and follows Google Analytics 4 implementation guidelines.
 
-## Licença
+## Contribution
 
-MIT License
-
-## Contribuição
-
-Contribuições são bem-vindas! Por favor, crie um issue ou pull request para sugestões ou melhorias.
+Contributions are welcome! Please create an issue or pull request for suggestions or improvements.
